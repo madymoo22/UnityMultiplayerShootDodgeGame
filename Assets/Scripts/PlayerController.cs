@@ -8,6 +8,18 @@ public class PlayerController : NetworkBehaviour
 
     public int lives = 3;
 
+    public override void OnNetworkSpawn()
+    {
+        if (OwnerClientId == 0)
+        {
+            transform.position = new Vector2(0, 4);
+        }
+        else
+        {
+            transform.position = new Vector2(0, -4);
+        }
+    }
+
     void Update()
     {
         if (!IsOwner) return;
@@ -28,13 +40,21 @@ public class PlayerController : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Shoot();
+            ShootServerRpc();
         }
     }
 
-    void Shoot()
+    [ServerRpc]
+    void ShootServerRpc()
     {
-        Instantiate(projectilePrefab, transform.position + Vector3.down * 1.0f, Quaternion.identity);
+        GameObject proj = ObjectPool.Instance.GetObject();
+
+        proj.transform.position = transform.position + Vector3.down;
+        proj.transform.rotation = Quaternion.identity;
+
+        proj.SetActive(true);
+
+        proj.GetComponent<NetworkObject>().Spawn();
     }
 
     public void TakeHit()

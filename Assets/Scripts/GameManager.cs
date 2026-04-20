@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,7 +28,10 @@ public class GameManager : MonoBehaviour
         if (player.lives <= 0)
         {
             onGameOver?.Invoke();
-            player.gameObject.SetActive(false);
+
+            DatabaseManager.Instance.SaveScore(player.lives);
+
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 }

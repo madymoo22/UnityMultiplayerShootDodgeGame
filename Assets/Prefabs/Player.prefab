@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5335759905360546282}
   - component: {fileID: 1338721901626570086}
   - component: {fileID: 3365128255812934836}
+  - component: {fileID: 4470469637837732356}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -106,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 146386043
+  GlobalObjectIdHash: 1506308543
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -211,3 +212,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4470469637837732356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930447767334871955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d7cfe9e38c5f94698e468b9d80dbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  ShowTopMostFoldoutHeaderGroup: 1
+  speed: 5
+  projectilePrefab: {fileID: 883226683570164882, guid: 6d08db9ae3674504fb2b895e0b9e6d28, type: 3}
+  lives: 3

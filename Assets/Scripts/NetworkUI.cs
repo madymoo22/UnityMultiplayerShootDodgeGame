@@ -1,22 +1,17 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NetworkUI : MonoBehaviour
 {
-    public GameObject menuUI;
-    public GameObject gameUI; 
-
     public void StartHost()
     {
         NetworkManager.Singleton.StartHost();
-        menuUI.SetActive(false);
-        gameUI.SetActive(true); 
+        NetworkManager.Singleton.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
 
     public void StartClient()
     {
         NetworkManager.Singleton.StartClient();
-        menuUI.SetActive(false);
-        gameUI.SetActive(true); 
     }
 }
